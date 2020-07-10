@@ -19,9 +19,14 @@
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.chen.stencil</groupId>
+            <artifactId>stencil-mbg</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.chen.stencil</groupId>
+            <artifactId>stencil-common</artifactId>
         </dependency>
 
         <dependency>

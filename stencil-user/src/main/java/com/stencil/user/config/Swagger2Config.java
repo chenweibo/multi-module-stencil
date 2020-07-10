@@ -1,4 +1,5 @@
-package com.chen.stencil.config;
+package com.stencil.user.config;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,11 +14,13 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import springfox.documentation.service.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Swagger API文档相关配置
+ */
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
@@ -26,9 +29,8 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.chen.stencil.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.stencil.user.controller"))
                 .paths(PathSelectors.any())
-
                 .build()
                 .securitySchemes(securitySchemes())
                 .securityContexts(securityContexts());
@@ -36,9 +38,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("后台系统文档")
-                .description("后台模块文档")
-                .contact(new Contact("chen","","563960993@qq.com"))
+                .title("前台系统")
+                .description("前台模块")
                 .version("1.0")
                 .build();
     }
@@ -76,4 +77,3 @@ public class Swagger2Config {
         return result;
     }
 }
-

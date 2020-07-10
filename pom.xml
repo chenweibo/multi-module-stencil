@@ -32,6 +32,7 @@
         <stencil-mbg.version>0.0.1-SNAPSHOT</stencil-mbg.version>
         <hutool.version>4.5.7</hutool.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <aliyun-oss.version>2.5.0</aliyun-oss.version>
         <druid.version>1.1.10</druid.version>
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
         <mysql-connector.version>8.0.20</mysql-connector.version>
@@ -131,6 +132,13 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector.version}</version>
+            </dependency>
+
+            <!-- 阿里云OSS -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
             </dependency>
 
             <dependency>
