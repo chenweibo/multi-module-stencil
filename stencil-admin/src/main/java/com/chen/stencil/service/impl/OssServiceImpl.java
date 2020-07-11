@@ -1,4 +1,4 @@
-package com.chen.stencil.service.Impl;
+package com.chen.stencil.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.aliyun.oss.OSSClient;
@@ -26,7 +26,7 @@ import java.util.Date;
 @Service
 public class OssServiceImpl implements OssService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(com.chen.stencil.service.Impl.OssServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.chen.stencil.service.impl.OssServiceImpl.class);
     @Value("${aliyun.oss.policy.expire}")
     private int ALIYUN_OSS_EXPIRE;
     @Value("${aliyun.oss.maxSize}")

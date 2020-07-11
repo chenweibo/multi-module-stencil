@@ -1,4 +1,4 @@
-package com.stencil.user.config;
+package com.chen.stencil.user.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan({"com.chen.stencil.mbg.mapper", "com.stencil.user.dao"})
+@MapperScan({"com.chen.stencil.mbg.mapper"})
 public class MyBatisPlusConfig {
 
     @Bean

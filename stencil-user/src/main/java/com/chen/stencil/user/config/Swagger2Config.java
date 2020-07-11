@@ -1,4 +1,4 @@
-package com.stencil.user.config;
+package com.chen.stencil.user.config;
 
 
 import org.springframework.context.annotation.Bean;
