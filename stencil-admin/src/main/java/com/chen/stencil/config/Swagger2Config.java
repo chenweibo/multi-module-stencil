@@ -38,7 +38,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("后台系统文档")
                 .description("后台模块文档")
-                .contact(new Contact("chen","","563960993@qq.com"))
+                .contact(new Contact("chen", "", "563960993@qq.com"))
                 .version("1.0")
                 .build();
     }
@@ -54,7 +54,7 @@ public class Swagger2Config {
     private List<SecurityContext> securityContexts() {
         //设置需要登录认证的路径
         List<SecurityContext> result = new ArrayList<>();
-//        result.add(getContextByPath("/brand/.*"));
+        result.add(getContextByPath("/aliyun/.*"));
 //        result.add(getContextByPath("/product/.*"));
 //        result.add(getContextByPath("/productCategory/.*"));
         return result;

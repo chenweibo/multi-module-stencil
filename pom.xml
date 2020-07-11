@@ -36,6 +36,7 @@
         <druid.version>1.1.10</druid.version>
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
         <mysql-connector.version>8.0.20</mysql-connector.version>
+        <minio.version>7.1.0</minio.version>
     </properties>
     <dependencies>
         <!--  -->
@@ -145,6 +146,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>2.3.1.RELEASE</version>
+            </dependency>
+            <!--MinIO JAVA SDK-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
             </dependency>
 
         </dependencies>
