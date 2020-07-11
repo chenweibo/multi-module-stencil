@@ -3,7 +3,7 @@ package com.chen.stencil.controller;
 
 import com.chen.stencil.common.response.CommonResult;
 import com.chen.stencil.mbg.model.Admin;
-import com.chen.stencil.service.Impl.AdminServiceImpl;
+import com.chen.stencil.service.impl.AdminServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

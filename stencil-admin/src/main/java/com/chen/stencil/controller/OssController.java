@@ -4,7 +4,7 @@ package com.chen.stencil.controller;
 import com.chen.stencil.common.response.CommonResult;
 import com.chen.stencil.dto.OssCallbackResult;
 import com.chen.stencil.dto.OssPolicyResult;
-import com.chen.stencil.service.Impl.OssServiceImpl;
+import com.chen.stencil.service.impl.OssServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

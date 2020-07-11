@@ -21,6 +21,7 @@
         <module>stencil-mbg</module>
         <module>stencil-security</module>
         <module>stencil-admin</module>
+        <module>stencil-user</module>
     </modules>
 
     <properties>

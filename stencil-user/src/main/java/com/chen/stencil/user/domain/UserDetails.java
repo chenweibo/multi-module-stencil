@@ -1,19 +1,18 @@
-package com.chen.stencil.domain;
+package com.chen.stencil.user.domain;
 
-import com.chen.stencil.mbg.model.Admin;
+import com.chen.stencil.mbg.model.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-public class AdminDetails implements UserDetails {
+public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
-    private Admin admin;
+    private Users users;
 
-    public AdminDetails(Admin admin) {
-        this.admin = admin;
+    public UserDetails(Users users) {
+        this.users = users;
     }
 
     @Override
@@ -24,12 +23,12 @@ public class AdminDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return admin.getPassword();
+        return users.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return admin.getUsername();
+        return users.getUsername();
     }
 
     @Override
@@ -49,10 +48,10 @@ public class AdminDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return admin.getStatus() == 1;
+        return users.getStatus() == 1;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public Users getUsers() {
+        return users;
     }
 }
