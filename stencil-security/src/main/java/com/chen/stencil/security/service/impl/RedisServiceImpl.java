@@ -1,6 +1,7 @@
 package com.chen.stencil.security.service.impl;
 
 
+import com.chen.stencil.common.exception.Asserts;
 import com.chen.stencil.security.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -31,7 +32,14 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Object get(String key) {
-        return redisTemplate.opsForValue().get(key);
+
+        if (hasKey(key)) {
+            return redisTemplate.opsForValue().get(key);
+        }
+
+        return "";
+
+
     }
 
     @Override

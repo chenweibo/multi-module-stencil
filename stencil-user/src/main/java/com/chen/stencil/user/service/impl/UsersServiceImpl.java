@@ -82,6 +82,18 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
 
     @Override
+    public String generateMailCode(String mail) {
+        StringBuilder code = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 6; i++) {
+            code.append(random.nextInt(10));
+        }
+        userCacheService.setMailCode(mail, code.toString());
+        return code.toString();
+    }
+
+
+    @Override
     public void updatePassword(String telephone, String password, String authCode) {
 
     }

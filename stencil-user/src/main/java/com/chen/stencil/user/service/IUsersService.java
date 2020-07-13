@@ -1,6 +1,5 @@
 package com.chen.stencil.user.service;
 
-import com.chen.stencil.mbg.model.*;
 import com.chen.stencil.mbg.model.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -57,6 +56,11 @@ public interface IUsersService extends IService<Users> {
      * 生成验证码
      */
     String generateAuthCode(String telephone);
+
+    /**
+     * 生成绑定邮箱验证码
+     */
+    String generateMailCode(String mail);
 
     /**
      * 获取当前登录管理员

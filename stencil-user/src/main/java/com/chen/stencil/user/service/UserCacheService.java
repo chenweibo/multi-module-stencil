@@ -28,6 +28,17 @@ public interface UserCacheService {
      */
     void setAuthCode(String telephone, String authCode);
 
+
+    /**
+     * 设邮箱验证码
+     */
+    void setMailCode(String mail, String authCode);
+
+    /**
+     * 获取邮箱验证码
+     */
+    String getMailCode(String mail);
+
     /**
      * 获取验证码
      */

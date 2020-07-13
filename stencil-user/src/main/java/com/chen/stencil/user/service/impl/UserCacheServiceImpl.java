@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserCacheServiceImpl implements UserCacheService {
 
-    @Autowired(required=true)
+    @Autowired(required = true)
     private RedisService redisService;
 
     @Autowired
@@ -26,11 +26,13 @@ public class UserCacheServiceImpl implements UserCacheService {
     //@Value("${redis.expire.common}")
     private Long REDIS_EXPIRE = 86400L;
     // @Value("${redis.expire.authCode}")
-    private Long REDIS_EXPIRE_AUTH_CODE = 90L;
+    private Long REDIS_EXPIRE_AUTH_CODE = 1800L;
     // @Value("${redis.key.admin}")
     private String REDIS_KEY_ADMIN = "userLogin";
     // @Value("${redis.key.authCode}")
-    private String REDIS_KEY_AUTH_CODE = "user:authCode";
+    private String REDIS_KEY_AUTH_CODE = "user:telode";
+
+    private String REDIS_KEY_MAIL_CODE = "user:mailCode";
 
     @Override
     public void delUser(Long userId) {
@@ -60,6 +62,21 @@ public class UserCacheServiceImpl implements UserCacheService {
         String key = REDIS_DATABASE + ":" + REDIS_KEY_AUTH_CODE + ":" + telephone;
         redisService.set(key, authCode, REDIS_EXPIRE_AUTH_CODE);
     }
+
+    @CacheException
+    @Override
+    public void setMailCode(String mail, String authCode) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_MAIL_CODE + ":" + mail;
+        redisService.set(key, authCode, REDIS_EXPIRE_AUTH_CODE);
+    }
+
+    @CacheException
+    @Override
+    public String getMailCode(String mail) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_MAIL_CODE + ":" + mail;
+        return (String) redisService.get(key);
+    }
+
 
     @CacheException
     @Override

@@ -18,4 +18,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsersPlatformServiceImpl extends ServiceImpl<UsersPlatformMapper, UsersPlatform> implements IUsersPlatformService {
 
+
 }
