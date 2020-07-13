@@ -46,6 +46,7 @@ secure:
       - /doc.html
       - /**/v2/api-docs-ext
       - /txt
+      - /oauth/**
 
 logging:
   level:
