@@ -1,14 +1,22 @@
 package com.chen.stencil.common.service.impl;
 
+
+
+
 import com.chen.stencil.common.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * redis操作实现类
+ */
+@Service
 public class RedisServiceImpl implements RedisService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -25,7 +33,14 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Object get(String key) {
-        return redisTemplate.opsForValue().get(key);
+
+        if (hasKey(key)) {
+            return redisTemplate.opsForValue().get(key);
+        }
+
+        return "";
+
+
     }
 
     @Override
@@ -91,7 +106,7 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public void hSetAll(String key, Map<String, ?> map) {
+    public void hSetAll(String key, Map<String, Object> map) {
         redisTemplate.opsForHash().putAll(key, map);
     }
 

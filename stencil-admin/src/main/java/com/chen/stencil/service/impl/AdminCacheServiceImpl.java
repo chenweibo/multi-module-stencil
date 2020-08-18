@@ -1,10 +1,10 @@
 package com.chen.stencil.service.impl;
 
 
+import com.chen.stencil.common.service.RedisService;
 import com.chen.stencil.mbg.mapper.AdminMapper;
 import com.chen.stencil.mbg.model.Admin;
 import com.chen.stencil.security.annotation.CacheException;
-import com.chen.stencil.security.service.RedisService;
 import com.chen.stencil.service.AdminCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

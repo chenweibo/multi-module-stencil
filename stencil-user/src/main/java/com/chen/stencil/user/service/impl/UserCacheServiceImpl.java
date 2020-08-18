@@ -1,10 +1,10 @@
 package com.chen.stencil.user.service.impl;
 
 
+import com.chen.stencil.common.service.RedisService;
 import com.chen.stencil.mbg.mapper.UsersMapper;
 import com.chen.stencil.mbg.model.Users;
 import com.chen.stencil.security.annotation.CacheException;
-import com.chen.stencil.security.service.RedisService;
 import com.chen.stencil.user.service.UserCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserCacheServiceImpl implements UserCacheService {
 
-    @Autowired(required = true)
+    @Autowired
     private RedisService redisService;
 
     @Autowired

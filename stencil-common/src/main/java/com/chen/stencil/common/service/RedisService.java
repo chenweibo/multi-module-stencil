@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * redis操作Service
+ */
 public interface RedisService {
 
     /**
@@ -84,7 +87,7 @@ public interface RedisService {
     /**
      * 直接设置整个Hash结构
      */
-    void hSetAll(String key, Map<String, ?> map);
+    void hSetAll(String key, Map<String, Object> map);
 
     /**
      * 删除Hash结构中的属性
