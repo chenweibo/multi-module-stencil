@@ -20,7 +20,6 @@ import java.util.Scanner;
 public class CodeGenerator {
 
 
-
     /**
      * <p>
      * 读取控制台内容
@@ -45,16 +44,15 @@ public class CodeGenerator {
         AutoGenerator mpg = new AutoGenerator();
 
 
-
-
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir")+"/stencil-mbg";
-       // System.out.println(projectPath);
+        String projectPath = System.getProperty("user.dir") + "/stencil-mbg";
+        // System.out.println(projectPath);
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("chen");
         gc.setOpen(false);
         gc.setSwagger2(true); //实体属性 Swagger2 注解
+        gc.setBaseResultMap(true); //基础map类
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -94,8 +92,8 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper"
-                        + "/" + tableInfo.getEntityName() + "mapper" + StringPool.DOT_XML;
+                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
 
@@ -108,10 +106,10 @@ public class CodeGenerator {
 
                     return !new File(filePath).exists();
                 }
-                if (fileType == FileType.SERVICE ||fileType == FileType.SERVICE_IMPL) {
-                    return !new File(filePath).exists();
+                if (fileType == FileType.SERVICE || fileType == FileType.SERVICE_IMPL) {
+                    return false;
                 }
-               // System.out.println(fileType.toString());
+                // System.out.println(fileType.toString());
                 if (fileType == FileType.OTHER) {
                     return !new File(filePath).exists();
                 }
@@ -119,7 +117,6 @@ public class CodeGenerator {
 
                     return false;
                 }
-
                 // 允许生成模板文件
                 return true;
             }
@@ -148,7 +145,7 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-       // strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+        // strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
         //strategy.setSuperEntityColumns("id");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
