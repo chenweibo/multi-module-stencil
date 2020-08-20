@@ -4,11 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -20,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author chen
- * @since 2020-07-11
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -45,8 +40,6 @@ public class UsersPlatform implements Serializable {
     @ApiModelProperty(value = "平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter")
     private Integer type;
 
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 

@@ -70,6 +70,8 @@ public class CodeGenerator {
         pc.setParent("com.chen.stencil.mbg");
         mpg.setPackageInfo(pc);
         pc.setEntity("model");
+        pc.setService("");
+        pc.setServiceImpl("");
         pc.setController("");
 
         // 自定义配置
