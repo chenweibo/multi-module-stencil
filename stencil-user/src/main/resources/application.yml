@@ -16,7 +16,7 @@ server:
   port: 8081
 
 mybatis-plus:
-  mapper-locations: classpath:dao/*.xml,classpath*:com/**/mapper/*.xml
+  mapper-locations: /mapper/**/*.xml,classpath:dao/*.xml
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头

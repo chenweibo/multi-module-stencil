@@ -7,7 +7,7 @@ spring:
       max-file-size: 10MB #限制文件上传大小为10M
       max-request-size: 10MB
 mybatis-plus:
-  mapper-locations: classpath:dao/*.xml,classpath*:com/**/mapper/*.xml
+  mapper-locations: /mapper/**/*.xml,classpath:dao/*.xml
 
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
