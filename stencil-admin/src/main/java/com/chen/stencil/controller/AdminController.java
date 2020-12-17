@@ -2,15 +2,20 @@ package com.chen.stencil.controller;
 
 
 import com.chen.stencil.common.response.CommonResult;
+import com.chen.stencil.dto.LoginParams;
+import com.chen.stencil.dto.UpdatePassword;
 import com.chen.stencil.mbg.model.Admin;
+import com.chen.stencil.service.AdminCacheService;
 import com.chen.stencil.service.impl.AdminServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +35,11 @@ public class AdminController {
     @Autowired
     private AdminServiceImpl adminService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AdminCacheService adminCacheService;
+
     @ApiOperation("管理员注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
@@ -42,9 +52,8 @@ public class AdminController {
     @ApiOperation("管理员登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult login(@RequestParam String username,
-                              @RequestParam String password) {
-        String token = adminService.login(username, password);
+    public CommonResult login(@RequestBody @Valid LoginParams loginParams) {
+        String token = adminService.login(loginParams.getUsername(), loginParams.getPassword());
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");
         }
@@ -76,10 +85,13 @@ public class AdminController {
     @ApiOperation("修改密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updatePassword(@RequestParam String telephone,
-                                       @RequestParam String password,
-                                       @RequestParam String authCode) {
-        adminService.updatePassword(telephone, password, authCode);
+    public CommonResult updatePassword(@RequestBody @Valid UpdatePassword updatePassword) {
+
+
+        Admin admin = adminService.getCurrentAdmin();
+        admin.setPassword(passwordEncoder.encode(updatePassword.getPassword()));
+        adminService.updateById(admin);
+        adminCacheService.setAdmin(admin);
         return CommonResult.success(null, "密码修改成功");
     }
 
