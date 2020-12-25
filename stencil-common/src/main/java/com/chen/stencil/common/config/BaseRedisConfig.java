@@ -19,6 +19,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
+/**
+ * Redis基础配置
+ * Created by macro on 2020/6/19.
+ */
 public class BaseRedisConfig {
 
     @Bean
@@ -31,6 +35,9 @@ public class BaseRedisConfig {
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashValueSerializer(serializer);
         redisTemplate.afterPropertiesSet();
+
+
+
         return redisTemplate;
     }
 
@@ -60,5 +67,4 @@ public class BaseRedisConfig {
     public RedisService redisService(){
         return new RedisServiceImpl();
     }
-
 }
